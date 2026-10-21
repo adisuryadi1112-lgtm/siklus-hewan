@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Siklus Kehidupan Hewan – IPAS Kelas 5</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root{--bg:#EEF7E8;--card:#fff;--ink:#1F3324;--mut:#5B7062;--pri:#2F8F4E;--pri2:#DDF1D5;--acc:#F5A524;--bad:#D6453D;--bad2:#FBE1DF;--ok2:#D9F2DE;--line:#CFE3C7;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14221A;--card:#1E3226;--ink:#EAF5E6;--mut:#9DB8A4;--pri:#5CCB7E;--pri2:#27422F;--acc:#F7B94A;--bad:#FF7A70;--bad2:#4A2523;--ok2:#21472C;--line:#335340;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14221A;--card:#1E3226;--ink:#EAF5E6;--mut:#9DB8A4;--pri:#5CCB7E;--pri2:#27422F;--acc:#F7B94A;--bad:#FF7A70;--bad2:#4A2523;--ok2:#21472C;--line:#335340;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Nunito',system-ui,sans-serif;font-size:17px;line-height:1.55}
+h1,h2,h3,.fn{font-family:'Baloo 2','Nunito',system-ui,sans-serif;line-height:1.15;margin:0}
+.wrap{max-width:860px;margin:0 auto;padding:16px}
+header{text-align:center;padding:14px 8px 6px}
+header h1{font-size:clamp(26px,6vw,40px);font-weight:800;color:var(--pri)}
+header p{margin:6px 0 0;color:var(--mut)}
+nav{display:flex;gap:8px;overflow-x:auto;padding:12px 0;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+nav button,.btn{font:700 16px 'Nunito',sans-serif;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 18px;cursor:pointer;white-space:nowrap}
+nav button[aria-selected=true],.btn.p{background:var(--pri);border-color:var(--pri);color:#fff}
+.btn.p{color:#08210f}
+:root:not([data-theme="dark"]) .btn.p,:root:not([data-theme="dark"]) nav button[aria-selected=true]{color:#fff}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:18px;margin-bottom:14px}
+.badge{display:inline-block;font-weight:700;font-size:14px;padding:3px 12px;border-radius:999px;background:var(--pri2);color:var(--ink)}
+.badge.s{background:#CDE8FF;color:#0F3558}.badge.t{background:#FFE7B8;color:#5A3A00}.badge.n{background:#F6D3F0;color:#55164B}
+.stages{display:flex;align-items:flex-end;justify-content:center;gap:6px;flex-wrap:wrap}
+.st{text-align:center;width:104px;transition:opacity .4s,transform .4s}
+.st .ic{height:84px;display:flex;align-items:flex-end;justify-content:center;line-height:1}
+.st b{display:block;font-size:14px;margin-top:4px;line-height:1.25}
+.ar{font-size:24px;color:var(--mut);align-self:center;padding-bottom:22px}
+.anim .st{opacity:.2;transform:scale(.85)}
+.anim .st.on{opacity:1;transform:scale(1);animation:pop .5s}
+@keyframes pop{50%{transform:scale(1.15)}}
+@media (prefers-reduced-motion:reduce){.st{transition:none}.anim .st.on{animation:none}}
+.cap{min-height:60px;margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--pri2);font-weight:700}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:520px}
+th,td{border:2px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;font-size:15px}th{background:var(--pri2)}
+.slots{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.slot,.pc{width:104px;min-height:128px;border-radius:16px;text-align:center;padding:8px 4px;font:700 14px 'Nunito',sans-serif;line-height:1.25}
+.slot{border:3px dashed var(--line);background:transparent;color:var(--mut);cursor:pointer}
+.slot.f{border-style:solid;border-color:var(--pri);background:var(--card);color:var(--ink)}
+.slot.ok{background:var(--ok2);border-color:var(--pri)}.slot.no{background:var(--bad2);border-color:var(--bad)}
+.pc{border:2px solid var(--acc);background:var(--card);color:var(--ink);cursor:pointer}
+.pc .ic,.slot .ic{height:64px;display:flex;align-items:flex-end;justify-content:center;line-height:1;margin-bottom:4px}
+.msg{font-weight:800;min-height:28px;margin:8px 0}
+.score{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:18px}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;font:700 16px 'Nunito',sans-serif;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.opt.ok{background:var(--ok2);border-color:var(--pri)}.opt.no{background:var(--bad2);border-color:var(--bad)}
+.bar{height:12px;border-radius:99px;background:var(--pri2);overflow:hidden;margin:6px 0 14px}.bar i{display:block;height:100%;background:var(--pri);transition:width .3s}
+.big{font:800 64px 'Baloo 2',sans-serif;color:var(--pri);text-align:center}
+.tc{text-align:center}
+svg text{font-family:inherit}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>Siklus Kehidupan Hewan</h1>
+<p>IPAS Kelas 5 · Dari telur sampai dewasa</p>
+</header>
+<nav role="tablist" id="nav"></nav>
+
+<section class="panel" id="p0"></section>
+<section class="panel" id="p1"></section>
+<section class="panel" id="p2"></section>
+<section class="panel" id="p3"></section>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const SVG={
+pupa:s=>`<svg width="${s}" height="${s}" viewBox="0 0 60 60"><line x1="30" y1="2" x2="30" y2="12" stroke="#8A6A3C" stroke-width="3"/><ellipse cx="30" cy="34" rx="12" ry="22" fill="#B98B52"/><path d="M20 26h20M19 34h22M20 42h20" stroke="#8A6A3C" stroke-width="2" fill="none"/></svg>`,
+berudu:s=>`<svg width="${s}" height="${s}" viewBox="0 0 60 60"><path d="M22 32C34 22 46 26 56 32 46 38 34 42 22 32Z" fill="#6B8F3A"/><circle cx="18" cy="32" r="12" fill="#4F6B2B"/><circle cx="14" cy="28" r="2.5" fill="#fff"/><circle cx="14" cy="28" r="1.2" fill="#000"/></svg>`
+};
+const E={egg:'🥚',ulat:'🐛',kupu:'🦋',katak:'🐸',belalang:'🦗',anak:'🐥',ayam:'🐔'};
+function ic(k,s){return SVG[k]?SVG[k](s):`<span style="font-size:${s}px">${E[k]}</span>`}
+const A=[
+{id:'kupu',nama:'Kupu-kupu',tipe:'Metamorfosis sempurna',c:'s',st:[
+ {n:'Telur',k:'egg',s:34,d:'Kupu-kupu betina meletakkan telur kecil di daun.'},
+ {n:'Ulat (larva)',k:'ulat',s:50,d:'Telur menetas jadi ulat. Ulat makan daun sangat banyak dan tumbuh besar.'},
+ {n:'Kepompong (pupa)',k:'pupa',s:56,d:'Ulat berhenti makan dan berubah di dalam kepompong.'},
+ {n:'Kupu-kupu dewasa',k:'kupu',s:64,d:'Kupu-kupu keluar dengan sayap indah dan bisa terbang.'}]},
+{id:'katak',nama:'Katak',tipe:'Metamorfosis sempurna',c:'s',st:[
+ {n:'Telur',k:'egg',s:34,d:'Katak bertelur di air. Telurnya berbentuk bulatan kecil berlendir.'},
+ {n:'Berudu',k:'berudu',s:52,d:'Telur menetas jadi berudu. Berudu berenang dengan ekor dan bernapas dengan insang.'},
+ {n:'Katak muda',k:'katak',s:42,d:'Kaki tumbuh, ekor menyusut, dan paru-paru mulai berfungsi.'},
+ {n:'Katak dewasa',k:'katak',s:64,d:'Katak dewasa hidup di air dan darat, bernapas dengan paru-paru dan kulit.'}]},
+{id:'belalang',nama:'Belalang',tipe:'Metamorfosis tidak sempurna',c:'t',st:[
+ {n:'Telur',k:'egg',s:34,d:'Belalang betina menaruh telur di dalam tanah.'},
+ {n:'Nimfa',k:'belalang',s:40,d:'Telur menetas jadi nimfa. Bentuknya mirip belalang dewasa, tetapi lebih kecil dan sayapnya belum sempurna.'},
+ {n:'Belalang dewasa',k:'belalang',s:64,d:'Nimfa berganti kulit beberapa kali sampai bersayap penuh dan bisa bertelur.'}]},
+{id:'ayam',nama:'Ayam',tipe:'Tumbuh tanpa metamorfosis',c:'n',st:[
+ {n:'Telur',k:'egg',s:34,d:'Induk ayam mengerami telur sekitar 21 hari.'},
+ {n:'Anak ayam',k:'anak',s:44,d:'Telur menetas jadi anak ayam. Bentuknya sudah mirip induknya.'},
+ {n:'Ayam dewasa',k:'ayam',s:64,d:'Anak ayam tumbuh makin besar tanpa mengubah bentuk tubuh.'}]}
+];
+const stageHTML=(a,cls)=>a.st.map((x,i)=>`${i?'<span class="ar" aria-hidden="true">➜</span>':''}<div class="st ${cls||''}" data-i="${i}"><div class="ic">${ic(x.k,x.s)}</div><b>${x.n}</b></div>`).join('');
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+
+/* NAV */
+const tabs=['📖 Belajar','🎬 Animasi','🧩 Susun Urutan','⭐ Kuis'];
+$('#nav').innerHTML=tabs.map((t,i)=>`<button role="tab" data-t="${i}">${t}</button>`).join('');
+function go(i){document.querySelectorAll('#nav button').forEach((b,j)=>b.setAttribute('aria-selected',i==j));document.querySelectorAll('.panel').forEach((p,j)=>p.classList.toggle('on',i==j));clearInterval(timer);if(i==1)play();window.scrollTo(0,0)}
+$('#nav').onclick=e=>{const b=e.target.closest('button');if(b)go(+b.dataset.t)};
+
+/* 0 BELAJAR */
+$('#p0').innerHTML=`<div class="card"><h2>Apa itu siklus kehidupan?</h2><p>Siklus kehidupan adalah tahap-tahap yang dilalui makhluk hidup sejak lahir, tumbuh, sampai dewasa dan berkembang biak. Pada hewan, banyak yang dimulai dari <b>telur</b>.</p></div>`
++A.map(a=>`<div class="card"><h3>${a.nama}</h3><span class="badge ${a.c}">${a.tipe}</span><div class="stages" style="margin:14px 0">${stageHTML(a)}</div><p style="margin:0;color:var(--mut)">${a.st.map(x=>x.d).slice(1,3).join(' ')}</p></div>`).join('')
++`<div class="card"><h2>Bedanya apa?</h2><div class="tw"><table><tr><th>Jenis</th><th>Tahapan</th><th>Ciri</th><th>Contoh</th></tr>
+<tr><td><b>Metamorfosis sempurna</b></td><td>Telur → larva → pupa → dewasa</td><td>Bentuk larva sangat berbeda dengan dewasa</td><td>Kupu-kupu, katak, nyamuk</td></tr>
+<tr><td><b>Metamorfosis tidak sempurna</b></td><td>Telur → nimfa → dewasa</td><td>Tidak ada pupa. Nimfa mirip dewasa tetapi lebih kecil</td><td>Belalang, kecoa, capung</td></tr>
+<tr><td><b>Tanpa metamorfosis</b></td><td>Telur → anak → dewasa</td><td>Bentuk anak sudah mirip induk, hanya bertambah besar</td><td>Ayam, bebek, kucing</td></tr></table></div></div>`;
+
+/* 1 ANIMASI */
+let cur=0,timer;
+$('#p1').innerHTML=`<div class="card"><h2>Lihat hewan tumbuh</h2><div class="row" id="ab"></div><div class="stages anim" id="as" style="min-height:150px"></div><div class="cap" id="ac" aria-live="polite"></div><div class="row"><button class="btn p" id="rp">▶ Putar ulang</button></div></div>`;
+$('#ab').innerHTML=A.map((a,i)=>`<button class="btn" data-a="${i}">${a.nama}</button>`).join('');
+$('#ab').onclick=e=>{const b=e.target.closest('button');if(b){cur=+b.dataset.a;play()}};
+$('#rp').onclick=()=>play();
+function play(){clearInterval(timer);const a=A[cur];
+ document.querySelectorAll('#ab .btn').forEach((b,i)=>b.classList.toggle('p',i==cur));
+ $('#as').innerHTML=stageHTML(a);const els=[...document.querySelectorAll('#as .st')];let i=0;
+ const show=()=>{els.forEach((e,j)=>e.classList.toggle('on',j<=i));$('#ac').textContent=`${a.st[i].n}: ${a.st[i].d}`};
+ $('#ac').textContent=a.tipe+'. Perhatikan tahapannya satu per satu.';
+ setTimeout(()=>{show();timer=setInterval(()=>{if(++i>=els.length){clearInterval(timer);$('#ac').textContent=`Selesai! ${a.nama} termasuk ${a.tipe.toLowerCase()}.`;return}show()},2800)},400)}
+
+/* 2 GAME */
+let G={a:0,pool:[],slots:[],pts:0,done:false,round:0,seen:[]};
+$('#p2').innerHTML=`<div class="card"><h2>Susun urutan siklus hidup</h2><p>Ketuk kartu untuk memasukkannya ke kotak, dari <b>tahap pertama</b>. Ketuk kotak untuk mengembalikan kartu.</p>
+<div class="score" id="gs"></div><h3 id="gt" style="margin-top:8px"></h3><div class="slots" id="sl"></div><div class="msg" id="gm"></div><div class="slots" id="pl" aria-label="Kartu tahap"></div>
+<div class="row"><button class="btn p" id="gc">Periksa jawaban</button><button class="btn" id="gn">Hewan lain</button></div></div>`;
+function newRound(){let order=shuffle(A.map((_,i)=>i));G.a=order.find(i=>!G.seen.includes(i))??order[0];
+ G.seen=G.seen.length>=A.length-1?[G.a]:[...G.seen,G.a];
+ const a=A[G.a];G.slots=a.st.map(()=>null);G.done=false;
+ let p;do{p=shuffle(a.st.map((_,i)=>i))}while(p.every((v,i)=>v==i));G.pool=p;G.round++;gm('');drawG()}
+function gm(t,c){const m=$('#gm');m.textContent=t;m.style.color=c||'var(--ink)'}
+function card(i,cls,tag){const x=A[G.a].st[i];return `<button class="${cls}" data-${tag}="${i}"><div class="ic">${ic(x.k,Math.min(x.s,52))}</div>${x.n}</button>`}
+function drawG(){const a=A[G.a];$('#gt').textContent=`Hewan: ${a.nama} (${a.st.length} tahap)`;$('#gs').textContent=`Skor: ${G.pts} ⭐`;
+ $('#sl').innerHTML=G.slots.map((v,i)=>v===null?`<button class="slot" data-s="${i}">Tahap ${i+1}</button>`:card(v,'slot f'+(G.done?(v==i?' ok':' no'):''),'s').replace(`data-s="${v}"`,`data-s="${i}"`)).join('');
+ $('#pl').innerHTML=G.pool.map(i=>G.slots.includes(i)?'':card(i,'pc','p')).join('')}
+$('#pl').onclick=e=>{const b=e.target.closest('[data-p]');if(!b||G.done)return;const i=G.slots.indexOf(null);if(i<0)return;G.slots[i]=+b.dataset.p;drawG()};
+$('#sl').onclick=e=>{const b=e.target.closest('[data-s]');if(!b||G.done)return;G.slots[+b.dataset.s]=null;drawG()};
+$('#gc').onclick=()=>{if(G.done)return;if(G.slots.includes(null)){gm('Isi semua kotak dulu ya.','var(--bad)');return}
+ const ok=G.slots.every((v,i)=>v==i);G.done=true;
+ if(ok){G.pts+=10;gm('Hebat! Urutanmu benar. +10 poin 🎉','var(--pri)')}else{G.pts=Math.max(0,G.pts);gm('Belum tepat. Lihat kotak merah, lalu coba hewan lain.','var(--bad)')}drawG()};
+$('#gn').onclick=newRound;
+newRound();
+
+/* 3 KUIS */
+const Q=[
+['Urutan siklus hidup kupu-kupu yang benar adalah…',['Telur → ulat → kepompong → kupu-kupu','Telur → kepompong → ulat → kupu-kupu','Ulat → telur → kupu-kupu → kepompong','Telur → kupu-kupu → ulat → kepompong'],0],
+['Tahap setelah telur pada siklus hidup katak adalah…',['Katak muda','Berudu','Kepompong','Nimfa'],1],
+['Belalang termasuk hewan dengan…',['Metamorfosis sempurna','Metamorfosis tidak sempurna','Tanpa metamorfosis','Tidak punya siklus hidup'],1],
+['Tahap kepompong disebut juga…',['Larva','Nimfa','Pupa','Imago muda'],2],
+['Ayam mengalami…',['Metamorfosis sempurna','Metamorfosis tidak sempurna','Hanya tumbuh, bentuk anak sudah mirip induk','Perubahan menjadi kepompong'],2],
+['Ciri khas metamorfosis sempurna adalah…',['Ada tahap pupa dan bentuk larva berbeda jauh dengan dewasa','Tidak ada tahap telur','Anak mirip induk','Hewan langsung dewasa'],0],
+['Anak belalang yang baru menetas disebut…',['Berudu','Ulat','Nimfa','Pupa'],2],
+['Hewan berikut yang mengalami metamorfosis sempurna adalah…',['Belalang','Ayam','Kecoa','Katak'],3],
+['Pada tahap apa kupu-kupu paling banyak makan daun?',['Telur','Ulat','Kepompong','Kupu-kupu dewasa'],1],
+['Apa beda nimfa dengan belalang dewasa?',['Nimfa mirip tetapi lebih kecil dan sayapnya belum sempurna','Nimfa hidup di dalam kepompong','Nimfa tidak punya kaki','Tidak ada bedanya sama sekali'],0]
+];
+let K={q:[],i:0,s:0,lock:false};
+function startQuiz(){K={q:shuffle(Q),i:0,s:0,lock:false};drawQ()}
+function drawQ(){const p=$('#p3');
+ if(K.i>=K.q.length){const sc=K.s*10,m=sc>=90?'Luar biasa! Kamu ahli siklus kehidupan 🏆':sc>=70?'Bagus sekali! Sedikit lagi sempurna 🌟':sc>=50?'Cukup baik. Baca materi lagi, lalu coba ulang 💪':'Ayo semangat! Pelajari tab Belajar dan Animasi, lalu coba lagi 🌱';
+  p.innerHTML=`<div class="card tc"><h2>Hasil kuis</h2><div class="big">${sc}</div><p>Benar ${K.s} dari ${K.q.length} soal</p><p><b>${m}</b></p><button class="btn p" id="qr">Main lagi</button></div>`;$('#qr').onclick=startQuiz;return}
+ const [t,o,c]=K.q[K.i],ans=o[c],op=shuffle(o);
+ p.innerHTML=`<div class="card"><div class="score">Soal ${K.i+1}/${K.q.length} · Skor ${K.s*10}</div><div class="bar"><i style="width:${K.i/K.q.length*100}%"></i></div><h3 style="font-size:22px;margin-bottom:10px">${t}</h3><div id="op">${op.map(x=>`<button class="opt">${x}</button>`).join('')}</div><div class="msg" id="qm" aria-live="polite"></div><button class="btn p" id="qn" hidden>Lanjut</button></div>`;
+ K.lock=false;
+ $('#op').onclick=e=>{const b=e.target.closest('.opt');if(!b||K.lock)return;K.lock=true;const right=b.textContent==ans;
+  document.querySelectorAll('.opt').forEach(x=>{if(x.textContent==ans)x.classList.add('ok')});
+  if(right){K.s++;$('#qm').textContent='Benar! 🎉';$('#qm').style.color='var(--pri)'}else{b.classList.add('no');$('#qm').textContent='Belum tepat. Jawaban yang benar sudah ditandai hijau.';$('#qm').style.color='var(--bad)'}
+  $('#qn').hidden=false;$('#qn').textContent=K.i==K.q.length-1?'Lihat hasil':'Lanjut'};
+ $('#qn').onclick=()=>{K.i++;drawQ()}}
+startQuiz();
+go(0);
+</script>
+</body>
+</html>
